@@ -19,5 +19,21 @@ while(True):
     if guess==num:
         print('CONGRATULATIONS!, you guessed the correct answer in {} attempts.\n'.format(len(guesses)))
         break
-        guesses.append(guess)                                           
-    if len(guesses)>10: 
+        guesses.append(guess)                                           # all the incorrect guesses are added to  list                                    
+    if len(guesses)>10:                                                 # after nine trials player may choose to know the answer
+    temp = int(input('Do you want to know the answer?\nPress 1 for Yes and 0 to continue\n'))
+        if temp == 1:
+            print(num)
+            print('Try next time, Cheers!')
+            break
+    if guesses[-2]==0:                                                 # when testing the first guess, guesses[-2]==0, which evaluates to False
+                                                                        # and brings us down to the second section
+        if abs(num-guess) < abs(num-guesses[-2]):
+            print('WARMER!')
+        else:
+            print('COLDER!')
+    else:
+        if abs(num-guess) <= 10:
+            print('WARM!')
+        else:
+            print('COLD!')
